@@ -1,0 +1,67 @@
+{
+	
+	"conf": {
+		"title": "GDG DevFest Extendend",
+		"sub_title": "28 de Março, Belo Horizonte",
+		"description": "Google Developers Group - BH - DevFest Extendend",
+		"cover_image": "http://gdgbhdevfest2015.appspot.com/img/og-gdg-image.png",
+		"place": {
+			"venue": "Auditório Lero Lero",
+			"address": "Av. Afonso Pena, 3148, BH",
+			"city": "Belo Horizonte",
+			"state": "MG",
+			"geo_point": {"lat": -19.938603, "lon":  -43.926832}
+		},
+		"contacts": {
+			"email": "gdgbhz@gmail.com"
+		},
+		"start_at": "10:00",
+		"end_at": "22:00",
+		"website_url": "http://gdgbhdevfest2015.appspot.com/",
+		"map_key":"AIzaSyCdv2cEruteJozLlFVXVagofxNPJuqy7jc",
+		"tracking_id": "UA-60535075-1"
+	},
+
+	"call_to_action": {
+		"title": "Fazer Inscrição",
+		"link": "http://eventick.com.br"
+	},
+	"about": "Saao you want to organize a conference? That's pretty awesome! But we know that you don't have time to create the website, since you have to worry about contacting sponsors, chossing the right place, buying airplane tickets for speakers and many other things.",
+
+	"schedule": [
+		{
+			"name": "Linus Torvalds",
+			"photo": "/img/bigheads/linus.jpg",
+			"link": "http://twitter.com/buenolucas",
+			"presentation": {
+				"title": "Digging into a Linux Kernel",
+				"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
+				"time": ["10","am"]
+			}
+		},
+		{
+			"name": "Chuck Norris",
+			"photo": "/img/bigheads/chuck.jpg",
+			"link": "http://twitter.com/chucknorris",
+			"presentation": {
+				"title": "How to kill a elephant with one finger",
+				"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
+				"time": ["10","am"]
+			}
+		}
+	],
+	"partners": [
+		{
+			"name": "Lucas Bueno",
+			"logo": "/img/partners/lucasbueno.png",
+			"url": "https://plus.google.com/+LucasBueno"
+		}
+	],
+	"sponsors": [
+		{
+			"name": "Lucas Bueno",
+			"logo": "/img/partners/lucasbueno.png",
+			"url": "https://plus.google.com/+LucasBueno"
+		}
+	]
+}

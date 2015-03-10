@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+<head>
+  <title>{{ data.conf.title }} - {{ data.conf.sub_title }}</title>
+
+  <meta charset="utf-8">
+  <meta name="author" content="{{data.conf.title}}">
+  <meta name="description" content="{{data.conf.description}}">
+  <meta name="viewport" content="width=device-width">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <!-- FACEBOOK -->
+  <!--<meta property="fb:app_id" content="372862979453673">-->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{data.conf.website_url}}">
+  <meta property="og:title" content="{{data.conf.title}} ">
+  <meta property="og:description" content="{{data.conf.description}}">
+  <meta property="og:image" content="{{data.conf.cover_image}}">
+  <!-- / FACEBOOK -->
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  
+  <!-- Roboto Font -->
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300,100' rel='stylesheet' type='text/css'>
+
+  <!-- Base CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+</head>
+<body data-spy="scroll" data-target=".navbar-example">
+    <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top navbar-example" >
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Trocar navegação</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#home">
+            <img src='/img/gdgbh-logo.png'/>
+          </a>
+        </div>
+
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#palestras">Palestras</a></li>
+            <li><a href="#localizacao">Localização</a></li>
+            <li><a href="#parceiros">Parceiros</a></li>
+            <li><a href="#patrocinadores">Patrocinadores</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <section class='main' id='home'>
+        <div class="container">
+          <div class="starter-template">
+            <h1>{{data.conf.title}}</h1>
+            <p class="lead">{{data.conf.sub_title}}</p>
+            <a id="hey-yo" class="btn btn-danger btn-lg " href="{{data.call_to_action.link}}">{{data.call_to_action.title}}</a>
+            <img class='igrejinha img-responsive' src="/img/igrejinha-pampulha-buenolucas.png"/>
+          </div>
+      </div>
+    </section>
+    <section class='sobre container' id='sobre'>
+
+    {{ data.about }}
+
+    </section>
+    <section class='agenda' id='palestras'>
+      <div class='container'>
+        <h2>Palestras</h2>
+
+        {% if data.schedule|length>0 %}
+
+          {% for e in data.schedule %}
+          <div class='presentation-gem row'>
+            <div class="col-sm-10">
+              <div class="pull-left" >
+                <span class='gem-hour'>{{ e.presentation.time[0] }}</span><span class='gem-turn'>{{ e.presentation.time[1] }}</span>
+              </div>
+              <div style="margin-left:120px;">
+                <h3>{{ e.presentation.title }}</h3>
+              <div class='sub'><a href="{{ e.link }}">{{ e.name }}</a></div>
+              <div>
+                {{ e.presentation.description }}
+              </div>
+              </div>
+            </div>
+            <div class="col-sm-2 hidden-xs">
+              <a href="{{ e.link }}"><img src='{{ e.photo }}' class="img-responsive" /></a>
+            </div>
+          </div>
+
+          {% if loop.index < data.schedule|length %} <hr/> {% endif %}
+          {% endfor %}
+
+        {% else %}
+
+          <div class="alert alert-warning" role="alert">Edit o arquivo data.json para adicionar as palestras</div>
+
+        {% endif %}
+        
+      </div>
+    </section>
+
+    <section class='localizacao' id='localizacao'>
+     
+      <div id="maplayer" class='maplayer'></div>
+      
+      <div class="content-wrapper"> 
+        <div class="col-lg-3 col-md-4 col-sm-6 col-md-offset-1 text-left card loc-bx"> 
+          <div class="row"> 
+            <div class="pull-left"> 
+              <h2>Localização</h2> 
+              <ul class='list-unstyled'> 
+                <li><strong>{{data.conf.place.venue}}</strong></li> 
+                <li>{{data.conf.place.address}}</li> 
+                <li><a href="mailto:{{ data.conf.contacts.email }}">{{ data.conf.contacts.email }}</a></li> 
+                <li> <time>{{ data.conf.start_at }}</time> - <time>{{ data.conf.end_at }}</time> </li> 
+              </ul> 
+            </div> 
+              <a href="#rota" class="pull-right"> <img src='img/direction-icon.png'/> </a> 
+            </div>
+          </div> 
+        </div>
+        <div style="clear:both"></div>
+
+    </section>
+
+    <section class='parceiros' id='parceiros'>
+      <div class='container'>
+        <h2>Parceiros</h2>
+        {% if data.partners|length>0 %}
+
+          {% for partner in data.partners %}
+            <div class='col-sm-4'>
+              <div class='card'>
+                <a href="{{partner.url}}">
+                  <img src="{{partner.logo}}" alt="{{partner.name}}" class="img-responsive friend-logo "/>
+                </a>
+              </div>
+            </div>
+          {% endfor %}
+
+        {% else %}
+
+          <div class="alert alert-warning" role="alert">Edite o arquivo data.json para adicionar parceiros</div>
+
+        {% endif %}
+      </div>
+    </section>
+
+    <section class='patrocinadores' id='patrocinadores'>
+      <div class='container'>
+
+        <h2>Patrocinadores</h2>
+
+        {% if data.sponsors|length>0 %}
+
+          {% for sponsor in data.sponsors %}
+            <div class='col-sm-4'>
+              <div class='card'>
+                <a href="{{sponsor.url}}">
+                  <img src="{{sponsor.logo}}" alt="{{sponsor.name}}" class="img-responsive friend-logo "/>
+                </a>
+              </div>
+            </div>
+          {% endfor %}
+
+        {% else %}
+
+          <div class="alert alert-warning" role="alert">Edite o arquivo data.json para adicionar patrocinadores</div>
+
+        {% endif %}
+      </div>
+    </section>
+
+    <footer>
+        <div class='container'>
+          <img src="img/gdgbh-logo-small.png">
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="/lib/jquery.color-2.1.2.min.js"></script>
+    <script src="/lib/jquery.animate-shadow-min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&key={{data.conf.map_key}}">
+    </script>
+    <script type="text/javascript">
+    var geoPoint = new google.maps.LatLng({{data.conf.place.geo_point.lat}},{{data.conf.place.geo_point.lon}});
+    </script>
+    <script type="text/javascript" src="/js/main.app.js"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', '{{ data.conf.tracking_id }}', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+
+  
+
+</body>
+</html>

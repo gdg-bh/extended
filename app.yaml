@@ -1,0 +1,57 @@
+application: gdgbhdevfest2015
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+builtins:
+- appstats: on
+
+handlers:
+
+
+# ---------------------------
+#
+# main static declarations
+#
+# ---------------------------
+- url: /(favicon\.png)
+  mime_type: image/png
+  static_files: static/\1
+  upload: static/favicon\.png
+
+- url: /(robots\.txt)
+  mime_type: text/plain
+  static_files: static/\1
+  upload: static/robots\.txt
+
+- url: /(img|css|js|lib|bower_components|elements|data)/(.*)
+  static_files: static/\1/\2
+  upload: static/(img|css|js|lib|bower_components|elements|data)/(.*)
+
+
+# ---------------------------
+#
+# routes 
+#
+# ---------------------------
+
+
+- url: /.*
+  script: main.app
+
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
+- name: webob
+  version: "1.2.3"
+- name: markupsafe
+  version: "0.15"
+- name: setuptools
+  version: "0.6c11"
+- name: jinja2
+  version: "2.6"
+- name: lxml
+  version: "2.3"
+
